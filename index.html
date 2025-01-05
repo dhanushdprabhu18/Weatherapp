@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherDheko</title>
+    <link rel="icon" href="/appfavicon.png" type="image/png"> <!-- Favicon -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="weather-card">
+            <h1>Weather Forecast</h1>
+            <input type="text" id="city" placeholder="Enter city name" />
+            <button id="getWeather">Get Report</button>
+            <h5>By <a href="https://www.linkedin.com/in/dhanush-d-prabhu-4b3b2132a/" target="_blank" rel="noopener noreferrer">Dhanush D Prabhu</a></h5>
+            <div id="weatherInfo" class="info">
+                <img id="weatherIcon" alt="Weather icon" />
+                <div id="temperature"></div>
+                <div id="humidity"></div>
+                <div id="windSpeed"></div>
+                <div id="weatherDescription"></div>
+            </div>
+
+            <div id="errorMessage"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
