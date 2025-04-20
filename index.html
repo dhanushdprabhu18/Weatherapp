@@ -18,13 +18,13 @@
         }
 
         .weather-app {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
             padding: 25px;
             width: 100%;
             max-width: 350px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
@@ -41,34 +41,42 @@
 
         input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px 15px;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
+            border-radius: 8px;
+            font-size: 16px;
             box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #253d5e;
+            box-shadow: 0 0 0 3px rgba(37, 61, 94, 0.1);
         }
 
         button {
             background: #183b5c;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 15px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             width: 100%;
-            margin-bottom: 15px;
-            transition: background 0.2s;
+            margin: 10px 0 15px 0;
+            transition: all 0.3s;
         }
 
         button:hover {
             background: #1f4b7a;
+            transform: translateY(-2px);
         }
 
         .creator {
             color: #555;
-            font-size: 13px;
+            font-size: 14px;
             margin-top: 15px;
         }
 
@@ -76,28 +84,44 @@
             color: #183b5c;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .creator a:hover {
+            color: #1f4b7a;
         }
 
         #weatherInfo {
             margin-top: 20px;
-            text-align: left;
             display: none;
-            font-size: 15px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        #weatherIcon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
         }
 
         #weatherInfo div {
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
+            margin: 8px 0;
+            color: #333;
+            font-size: 16px;
         }
 
         #errorMessage {
             color: #e74c3c;
-            margin-top: 10px;
-            font-size: 13px;
+            margin: 10px 0;
+            font-size: 14px;
+            min-height: 20px;
         }
 
-        /* Mobile-specific adjustments */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 400px) {
             .weather-app {
                 padding: 20px;
@@ -105,12 +129,10 @@
             
             h1 {
                 font-size: 20px;
-                margin-bottom: 15px;
             }
             
             input, button {
-                padding: 8px 12px;
-                font-size: 14px;
+                padding: 10px 15px;
             }
         }
     </style>
@@ -125,17 +147,77 @@
         
         <button id="getWeather">Get Report</button>
         
-        <div class="creator">By <a href="https://www.linkedin.com/in/dhanush-d-prabhu-4b3b2132a/" target="_blank">Dhanush D Prabhu</a></div>
+        <div id="errorMessage"></div>
         
         <div id="weatherInfo">
+            <img id="weatherIcon" alt="Weather icon">
             <div id="temperature"></div>
             <div id="humidity"></div>
             <div id="windSpeed"></div>
-            <div id="description"></div>
+            <div id="weatherDescription"></div>
         </div>
         
-        <div id="errorMessage"></div>
+        <div class="creator">By <a href="https://www.linkedin.com/in/dhanush-d-prabhu-4b3b2132a/" target="_blank">Dhanush D Prabhu</a></div>
     </div>
-    <script src="app.js"></script>
+
+    <script>
+        const apiKey = 'b005fe3c5f0289ef25afa3998711b9dc';
+        const apiBaseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+
+        document.getElementById('getWeather').addEventListener('click', fetchWeatherData);
+        document.getElementById('city').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') fetchWeatherData();
+        });
+
+        function fetchWeatherData() {
+            const city = document.getElementById('city').value.trim();
+            const errorElement = document.getElementById('errorMessage');
+
+            if (city === '') {
+                errorElement.innerText = 'Please enter a city name.';
+                return;
+            }
+
+            errorElement.innerText = '';
+            document.getElementById('weatherInfo').style.display = 'none';
+
+            const url = `${apiBaseUrl}?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('City not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.cod === 200) {
+                        displayWeatherData(data);
+                    } else {
+                        throw new Error(data.message || 'City not found');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    errorElement.innerText = error.message || 'Failed to fetch weather data. Please try again.';
+                });
+        }
+
+        function displayWeatherData(data) {
+            const temp = Math.round(data.main.temp);
+            const humidity = data.main.humidity;
+            const windSpeed = (data.wind.speed * 3.6).toFixed(1); // Convert to km/h
+            const weatherDescription = data.weather[0].description;
+            const weatherIcon = data.weather[0].icon;
+
+            document.getElementById('temperature').textContent = `Temperature: ${temp}°C`;
+            document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
+            document.getElementById('windSpeed').textContent = `Wind Speed: ${windSpeed} km/h`;
+            document.getElementById('weatherDescription').textContent = `Condition: ${weatherDescription}`;
+            document.getElementById('weatherIcon').src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+            
+            document.getElementById('weatherInfo').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
