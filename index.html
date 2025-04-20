@@ -4,28 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherDheko</title>
-    <link rel="icon" href="/appfavicon.png" type="image/png"> <!-- Favicon -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .weather-app {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #253d5e;
+            margin: 0 0 20px 0;
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #183b5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1f4b7a;
+        }
+
+        .creator {
+            color: #555;
+            font-size: 13px;
+            margin-top: 15px;
+        }
+
+        .creator a {
+            color: #183b5c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        #weatherInfo {
+            margin-top: 20px;
+            text-align: left;
+            display: none;
+            font-size: 15px;
+        }
+
+        #weatherInfo div {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #errorMessage {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 400px) {
+            .weather-app {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            
+            input, button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="weather-card">
-            <h1>Weather Forecast</h1>
-            <input type="text" id="city" placeholder="Enter city name" />
-            <button id="getWeather">Get Report</button>
-            <h5>By <a href="https://www.linkedin.com/in/dhanush-d-prabhu-4b3b2132a/" target="_blank" rel="noopener noreferrer">Dhanush D Prabhu</a></h5>
-            <div id="weatherInfo" class="info">
-                <img id="weatherIcon" alt="Weather icon" />
-                <div id="temperature"></div>
-                <div id="humidity"></div>
-                <div id="windSpeed"></div>
-                <div id="weatherDescription"></div>
-            </div>
-
-            <div id="errorMessage"></div>
+    <div class="weather-app">
+        <h1>WEATHER FORECAST</h1>
+        
+        <div class="input-group">
+            <input type="text" id="city" placeholder="Enter city name">
         </div>
+        
+        <button id="getWeather">Get Report</button>
+        
+        <div class="creator">By <a href="https://www.linkedin.com/in/dhanush-d-prabhu-4b3b2132a/" target="_blank">Dhanush D Prabhu</a></div>
+        
+        <div id="weatherInfo">
+            <div id="temperature"></div>
+            <div id="humidity"></div>
+            <div id="windSpeed"></div>
+            <div id="description"></div>
+        </div>
+        
+        <div id="errorMessage"></div>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
