@@ -1,54 +1,42 @@
-WeatherApp
-A simple weather application that fetches and displays weather data based on user input (city name). Built using HTML, CSS, and JavaScript with the OpenWeatherMap API.
+# ⛅ Weather App 🌦️
 
+Stay updated with real-time weather info for any city in the world!  
+Built with 💙 using **HTML**, **CSS**, and **JavaScript**, this app fetches live weather data and displays it beautifully.
 
+---
 
-Features
-Real-time Weather Data: Fetches current weather conditions for any city.
+## 🔗 Live Demo
 
-Dynamic UI: Displays temperature, humidity, wind speed, and weather conditions.
+[🌍 Click here to explore the weather around the world!](https://dhanushdprabhu18.github.io/Weatherapp)
 
-Responsive Design: Works on both desktop and mobile devices.
+---
 
-Error Handling: Shows user-friendly messages for invalid inputs or API errors.
+## 📸 Preview
 
-Technologies Used
-Frontend: HTML, CSS, JavaScript
+![Weather App Screenshot](https://user-images.githubusercontent.com/your-screenshot.png) <!-- Replace with actual image URL -->
 
-API: OpenWeatherMap
+---
 
-Setup Instructions
-Clone the repository:
+## 🛠️ Tech Stack
 
-bash
-git clone https://github.com/dhanushdprabhu18/Weatherapp.git
-cd Weatherapp
-Get an API Key:
+- 🌐 **HTML** – Markup structure
+- 🎨 **CSS** – Styling and layout
+- ⚙️ **JavaScript** – API handling & logic
+- ☁️ **OpenWeatherMap API** – Live weather data
 
-Sign up for a free API key at OpenWeatherMap.
+---
 
-Replace 'YOUR_API_KEY' in script.js with your actual API key.
+## 🚀 Features
 
-Run the App:
+- 🌎 Search any city worldwide
+- 📍 Displays Temperature, Humidity, Wind Speed & Conditions
+- 🎯 Responsive Design – Works on all devices
+- 🔁 Real-time API fetch using `fetch()`
 
-Open index.html in a web browser (no server required).
+---
 
-Usage
-Enter a city name in the search box.
+## 📂 How to Use Locally
 
-Click the search button or press Enter.
-
-View the current weather details for the specified location.
-
-File Structure
-Weatherapp/
-├── index.html          # Main HTML file
-├── style.css           # CSS styles
-├── script.js           # JavaScript logic
-├── WeatherApp.png      # Screenshot (optional)
-└── README.md           # Project documentation
-Contributing
-Contributions are welcome! Fork the repository, make your changes, and submit a pull request.
-
-License
-This project is open-source under the MIT License.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/dhanushdprabhu18/Weatherapp.git
