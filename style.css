@@ -7,7 +7,7 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    background: url('/chuttersnap-9AqIdzEc9pY-unsplash.jpg') no-repeat center center fixed;
+    background: url('/cloudy.jpg') no-repeat center center fixed;
     background-size: cover;
     transition: all 0.5s ease;
     cursor: url('/cursor.png') 16 16, auto; /* Added hotspot position and fallback */
