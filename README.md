@@ -19,24 +19,30 @@ Built with 💙 using **HTML**, **CSS**, and **JavaScript**, this app fetches li
 
 ## 🛠️ Tech Stack
 
-- 🌐 **HTML** – Markup structure
-- 🎨 **CSS** – Styling and layout
-- ⚙️ **JavaScript** – API handling & logic
-- ☁️ **OpenWeatherMap API** – Live weather data
+- 🌐 **HTML** – Markup structure  
+- 🎨 **CSS** – Styling and layout  
+- ⚙️ **JavaScript** – API handling & logic  
+- ☁️ **OpenWeatherMap API** – Live weather data  
 
 ---
 
 ## 🚀 Features
 
-- 🌎 Search any city worldwide
-- 📍 Displays Temperature, Humidity, Wind Speed & Conditions
-- 🎯 Responsive Design – Works on all devices
-- 🔁 Real-time API fetch using `fetch()`
+- 🌎 Search any city worldwide  
+- 📍 Displays Temperature, Humidity, Wind Speed & Conditions  
+- 🎯 Responsive Design – Works on all devices  
+- 🔁 Real-time API fetch using `fetch()`  
 
 ---
 
-## 📂 How to Use Locally
+🧑‍💻 Author
+Made with 💙 by Dhanush D Prabhu
+📧 dhanushdprabhu18@gmail.com
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/dhanushdprabhu18/Weatherapp.git
+🌟 Show Your Support
+If you like this project, give it a ⭐ and share it with your friends!
+Let’s build more awesome projects together 🚀
+
+📝 License
+This project is licensed under the MIT License
+
